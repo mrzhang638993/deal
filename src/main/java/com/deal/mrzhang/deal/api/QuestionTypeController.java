@@ -7,12 +7,15 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.ParseException;
+import java.util.List;
 
 
 @RestController
@@ -31,4 +34,16 @@ public class QuestionTypeController {
         logger.info("查看所有的类型列表:"+ JSON.toJSONString(allQuestionType));
         return allQuestionType;
     }
+
+   /**
+    * 处理excel文件导入的请求
+    * */
+   @PostMapping(value = "/excelExport")
+   @ApiOperation("excel文件导入操作")
+    public void  excelExport( MultipartFile file) throws IOException, ParseException {
+       logger.info("输入的excel文件"+file.getOriginalFilename());
+       InputStream inputStream = file.getInputStream();
+       List<List<Object>> lists = ExcelUtils.readXlsxFirstSheet(inputStream);
+       questionTypeService.excelExport(lists);
+   }
 }

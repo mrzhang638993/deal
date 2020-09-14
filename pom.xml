@@ -11,7 +11,7 @@
     <groupId>com.deal.mrzhang</groupId>
     <artifactId>deal</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>deal</name>
     <description>Demo project for Spring Boot</description>
 
@@ -84,6 +84,21 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.73</version>
         </dependency>
+        <!--springboot页面静态化-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!--导入excel工具类-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>4.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -122,27 +137,6 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <encoding>utf-8</encoding>
-                </configuration>
-            </plugin>
-            <!-- 打包成可直接运行的jar包，如java -jar xx.jar -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <!--<attachClasses>true</attachClasses>,这样B项目内就可以使用A项目定义的class了-->
-                    <attachClasses>true</attachClasses>
-                    <!--打包的时候如果不想使用WEB-INF/classes,则在插件的配置内指定 <archiveClasses>true</archiveClasses>
-                        即可,这样会把项目的java文件打包成jar放到WEB-INF/lib内-->
-                    <archiveClasses>true</archiveClasses>
-                    <packagingExcludes>WEB-INF/classes/**/**</packagingExcludes>
-                    <webResources>
-                        <resource>
-                            <directory>target/${project.artifactId}/WEB-INF/classes</directory>
-                            <excludes>
-                                <exclude>**/**</exclude>
-                            </excludes>
-                        </resource>
-                    </webResources>
                 </configuration>
             </plugin>
             <!-- 打包时将依赖包放入指定路径 -->

@@ -17,7 +17,7 @@
         <!-- 数据库连接 -->
         <jdbcConnection
                 driverClass="com.mysql.jdbc.Driver"
-                connectionURL="jdbc:mysql://47.114.186.104:3306/deal"
+                connectionURL="jdbc:mysql://119.96.124.154:3306/deal"
                 userId="root"
                 password="Mrzhang1@"/>
 
@@ -36,7 +36,7 @@
             &lt;!&ndash; 数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉 &ndash;&gt;
             &lt;!&ndash;<domainObjectRenamingRule searchString="^Tbl" replaceString=""/>&ndash;&gt;
         </table>-->
-
+<!--
         <table tableName="first_question_type" domainObjectName="FirstQuestionType"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
@@ -51,13 +51,13 @@
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
-        </table>
+        </table>-->
         <table tableName="question_detail" domainObjectName="QuestionDetail"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
         </table>
-        <table tableName="question_source" domainObjectName="QuestionSource"
+    <!--    <table tableName="question_source" domainObjectName="QuestionSource"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
@@ -71,6 +71,6 @@
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
-        </table>
+        </table>-->
     </context>
 </generatorConfiguration>
