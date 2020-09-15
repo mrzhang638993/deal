@@ -258,6 +258,7 @@ public class ExcelUtils {
                 // 日期类型，转换为日期
                 if (DateUtil.isCellDateFormatted(cell)) {
                     value = cell.getDateCellValue();
+                    break;
                 } else
                 // 数值类型
                 {

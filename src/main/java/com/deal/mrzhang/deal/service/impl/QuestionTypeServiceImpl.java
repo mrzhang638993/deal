@@ -185,6 +185,8 @@ public class QuestionTypeServiceImpl implements QuestionTypeService {
                     questionDetail.setCreateDate(DateUtils.transFormate((Date) o));
                 }
             }
+        }else if (o instanceof Date){
+            questionDetail.setCreateDate((Date) o);
         }
         Object o1 = data.get(13);
         if (o1 instanceof Date) {
