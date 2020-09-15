@@ -28,4 +28,12 @@ public class DateUtils {
             return format.parse(str);
         }
     }
+
+
+    /**
+     * 执行导出操作的时候，对应的时间输入格式的处理操作的
+     * */
+    public static Date DateTrim(Date date){
+        return new Date();
+    }
 }

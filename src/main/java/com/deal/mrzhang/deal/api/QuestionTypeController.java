@@ -25,7 +25,7 @@ public class QuestionTypeController {
     @Autowired
     private QuestionTypeService questionTypeService;
 
-    @GetMapping("/getTypes")
+   /* @GetMapping("/getTypes")
     @ResponseBody
     @ApiOperation("获取所有的问题类型")
     public QuestionType getAllQuestionType(Integer typeId){
@@ -33,17 +33,26 @@ public class QuestionTypeController {
         QuestionType allQuestionType = questionTypeService.getAllQuestionType(typeId);
         logger.info("查看所有的类型列表:"+ JSON.toJSONString(allQuestionType));
         return allQuestionType;
-    }
+    }*/
 
    /**
     * 处理excel文件导入的请求
     * */
-   @PostMapping(value = "/excelExport")
+   @PostMapping(value = "/excelImport")
    @ApiOperation("excel文件导入操作")
     public void  excelExport( MultipartFile file) throws IOException, ParseException {
        logger.info("输入的excel文件"+file.getOriginalFilename());
        InputStream inputStream = file.getInputStream();
        List<List<Object>> lists = ExcelUtils.readXlsxFirstSheet(inputStream);
        questionTypeService.excelExport(lists);
+   }
+
+   /**
+    * 统计结果输出为excel
+    * * */
+   @PostMapping("/excelExport")
+   @ApiOperation("excel报表导出操作")
+    public void excelExport(){
+
    }
 }
